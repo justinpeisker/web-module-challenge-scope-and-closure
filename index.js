@@ -77,6 +77,7 @@ function inning(){
 console.log('TASK 2', inning());
 
 
+
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
   1. Receive the callback function `inning` that was created in Task 2 
@@ -92,10 +93,13 @@ Use the finalScore function below to do the following:
 */ 
 
 function finalScore(inningcb, number){
-
+  return{
+    Home: inningcb(),
+    Away: inningcb()
+  }
+}
   
    
-}
 
 console.log('TASK 3', finalScore(inning, 9));
 
@@ -159,8 +163,20 @@ function scoreboard(getInningScorecb, inningcb, number) {
     
   const scoreBoard = [];
 
+  let homeScore = 0;
+  let awayScore = 0;
+  
+  for (let i = 0; i < 9; i++){
+    let currentScore = getInningScorecb(inningcb);
+    homeScore = homeScore + currentScore.Home;
+    awayScore = awayScore + currentScore.Away;
+    scoreBoard.push(`inning ${i + 1}Away:${currentScore.Away} - Home:${currentScore.Home}`);
+    }
+    return scoreBoard;
+  }
+    
 
-}
+console.log('TASK 5', scoreboard(getInningScore, inning, 9));
 
 
 
