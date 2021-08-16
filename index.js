@@ -28,11 +28,18 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+
+      Counter 1: 'let count' is function scoped, it will build on previous invocation, contains a closure
+      Counter 2: 'let count' is global scoped, it will reset every time, does not contain a closure
+
   2. Which of the two uses a closure? How can you tell?
+
+      Counter 1 because the inner function calls on a value from the outer function
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+
+      Counter 1 unless you needed to call the count variable globally, then counter 2
 */
 
 // counter1 code
@@ -62,9 +69,12 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+  return Math.floor(Math.random() * Math.floor(3));
+
 }
+
+console.log('TASK 2', inning());
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -81,18 +91,27 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningcb, number){
+
+  
+   
 }
+
+console.log('TASK 3', finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningcb) {
+  return{
+    Home: inningcb(),
+    Away: inningcb()
+  }
 }
+
+console.log('TASK 4', getInningScore(inning));
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -136,8 +155,11 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScorecb, inningcb, number) {
+    
+  const scoreBoard = [];
+
+
 }
 
 
